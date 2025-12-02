@@ -108,6 +108,8 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
   
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
@@ -348,7 +350,8 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            Geospatial modeling provides critical solutions for pressing global challenges such as sustainability and climate change. Existing large language model (LLM)–based algorithm discovery frameworks, such as AlphaEvolve, excel at evolving generic code but lack the domain knowledge and multi-step reasoning required for complex geospatial problems. We introduce <b>GeoEvolve</b>, a multi-agent LLM framework that couples evolutionary search with geospatial domain knowledge to automatically design and refine geospatial algorithms. GeoEvolve operates in two nested loops: an inner loop leverages a code evolver to generate and mutate candidate solutions, while an outer agentic controller evaluates global elites and queries a GeoKnowRAG module—a structured geospatial knowledge base that injects theoretical priors from geography. This knowledge-guided evolution steers the search toward theoretically meaningful and computationally efficient algorithms. We evaluate GeoEvolve on two fundamental and classical tasks: spatial interpolation (kriging) and spatial uncertainty quantification (geospatial conformal prediction). Across these benchmarks, GeoEvolve automatically improves and discovers new algorithms, incorporating geospatial theory on top of classical models. It reduces spatial interpolation error (RMSE) by 13–21% and enhances uncertainty estimation performance by 17%. Ablation studies confirm that domain-guided retrieval is essential for stable, high-quality evolution. These results demonstrate that GeoEvolve provides a scalable path toward automated, knowledge-driven geospatial modeling, opening new opportunities for trustworthy and efficient AI-for-Science discovery.
+            Geospatial modeling provides critical solutions for pressing global challenges such as sustainability and climate change. Existing large language model (LLM)–based algorithm discovery frameworks, such as AlphaEvolve, excel at generic code evolution but lack the domain knowledge required for complex geospatial problems. We introduce GeoEvolve, a multi-agent LLM framework that couples evolutionary search with dynamic geospatial domain knowledge. GeoEvolve operates in nested loops: an inner code evolver generates candidate solutions, while an outer agentic controller—supported by Automated Knowledge Construction and Code-to-Formula agents—queries a Dynamic GeoKnowRAG module to inject theoretical priors. This architecture addresses the challenges of spatial heterogeneity and temporal non-stationarity. We evaluate GeoEvolve on three classical tasks: spatial interpolation (Kriging), uncertainty quantification (GeoCP), and spatial regression (GWR). Across 9 datasets, GeoEvolve discovers novel algorithms that incorporate geospatial theory. It achieves significant gains, such as a 29.5% increase in regression \(R^2\) and a 13–21% reduction in interpolation error. Furthermore, extensive ablation studies confirm GeoEvolve’s robustness across diverse foundation models (GPT, Gemini, Qwen) and its spatiotemporal generalizability, validating that domain-guided retrieval is essential for stable evolution.
+Collectively, these results offer a scalable path toward trustworthy, automated geospatial modeling, opening new avenues for efficient AI-for-Science discovery.
           </p>
         </div>
       </div>
@@ -361,13 +364,12 @@
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
       <h2 class="title is-3">Method Overview</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           
           <div class="summary_large_image">
-            <img src="static/images/method_overview.png" />            
+            <img src="static/images/Figure_X_illustration_with_examples.png" />            
           </div>
           <p class="has-text-justified" style="font-size: 8;">An illustration of the code-evolution trajectory of a geospatial model integrating domain
 knowledge. The dashed inner box represents the code evolver, a general algorithmic code-generation
@@ -381,24 +383,88 @@ paper, specifically tailored for geospatial modeling.</p>
 <!-- End method overview -->
 
 
-<!-- Image carousel -->
+<!-- Method overview -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Example: Spatial Interpolation Model</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="summary_large_image">
+            <img src="static/images/Example_Kriging.png" />            
+          </div>
+          <p class="has-text-justified" style="font-size: 8;">
+            Kriging (Matheron 1963) is a spatial interpolation method used to obtain predictions at unsampled locations based on observed geostatistical data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method overview -->
+
+<!-- Method overview -->
 <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Example: Spatial Uncertainty Quantification Model</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="summary_large_image">
+            <img src="static/images/Example_GeoCP.png" />            
+          </div>
+          <p class="has-text-justified" style="font-size: 8;">
+            GeoConformal Prediction (GeoCP) is a model-agnostic algorithm for estimating the uncertainty of spatial prediction models (Lou et. al., 2025).
+            $$\mathcal{C}(X)=\left\{y:a(f(X),y)\le Q^{geo}_{1-\varepsilon}(\{a_i\},\{w_i(u,v)\})\right\}$$
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method overview -->
+
+<!-- Method overview -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Example: Spatial Regression Model</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="summary_large_image">
+            <img src="static/images/Example_GWR.png" />            
+          </div>
+          <p class="has-text-justified" style="font-size: 8;">
+            Geographically weighted regression (GWR) (Fotheringham et al., 2009), one of the most famous spatial regression models. For GWR, the regression coefficients are not fixed, but depend on the geographical coordinates of observation。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method overview -->
+
+<!-- Image carousel -->
+<!-- <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Metrics During Evolution</h2>
       <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
+       <div class="item"> -->
         <!-- TODO: Replace with your research result images -->
-        <img src="static/images/metrics_kriging.png" alt="First research result visualization" loading="lazy" />
+        <!-- <img src="static/images/metrics_kriging.png" alt="First research result visualization" loading="lazy" /> -->
         <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
+        <!-- <h2 class="subtitle has-text-centered">
           <strong>Ordinary Kriging</strong></em>
         </h2>
       </div>
 
-      <div class="item">
+      <div class="item"> -->
         <!-- Your image here -->
-        <img src="static/images/metrics_geocp.png" alt="Third research result visualization" loading="lazy" />
+        <!-- <img src="static/images/metrics_geocp.png" alt="Third research result visualization" loading="lazy" />
         <h2 class="subtitle has-text-centered">
          <strong>GeoCP</strong>
        </h2>
@@ -406,7 +472,7 @@ paper, specifically tailored for geospatial modeling.</p>
   </div>
 </div>
 </div>
-</section>
+</section> -->
 <!-- End image carousel -->
 
 
